@@ -54,7 +54,7 @@ setTimeout(function () {
     } else if (guessedNumbers.length == 0) {
         alert("Oh no! Sembra che tu non sia riuscito a ricordare nemmeno un numero!")
     } else {
-        alert("Hai indovinato i numeri " + guessedNumbers.join(" - ") + " ma non ti sei ricordato di " + wrongNumbers.join(" - ") + " .");
+        alert("Hai indovinato i numeri " + guessedNumbers.join(" - ") + " ma hai sbagliato " + wrongNumbers.join(" - ") + " .");
     }
 
 }, 3000);
