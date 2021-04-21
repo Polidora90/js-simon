@@ -12,6 +12,8 @@ var computersNumbersLenght = 5;
 var computerNumbers = [];
 var userNumbers = [];
 
+var guessedNumbers = [];
+var wrongNumbers = [];
 
 //creo 5 numeri random da 1 a 100 e li pusho in un array
 for (var i = 0; i < computersNumbersLenght; i++) {
@@ -21,19 +23,41 @@ console.log(computerNumbers);
 
 
 //alert per mostrare i numeri all'utente
-alert("Ciao! Memorizza questi numeri: " + computerNumbers.join(" - ") + ". Fatto? Bene. Clicca ok vediamo qunti ne ricorderai tra 30 secondi!");
+alert("Ciao! Memorizza questi numeri: " + computerNumbers.join(" - ") + ". Fatto? Bene. Clicca ok, vediamo qunti ne ricorderai tra 30 secondi!");
 
-setTimeout (myFunction, 30000);
-function myFunction() {
-    for (let i = 0; i < 5; i++) {
+//--------------------------------------------------------ricorda di rimettere i secondi a 30!!
+setTimeout(function () {
+    for (var i = 0; i < 5; i++) {
         var numeroUtente
         numeroUtente = parseInt(prompt("Inserisci un numero!"));
         userNumbers.push(numeroUtente);
+
+        var number = userNumbers[i];
+
+        console.log(userNumbers);
+
+
+        if (computerNumbers.includes(number)) {
+            guessedNumbers.push(number);
+        } else {
+            wrongNumbers.push(number);
+        }
+
     }
-}
 
-console.log(userNumbers);
+    console.log("hai indovinato " + guessedNumbers + " e hai sbagliato " + wrongNumbers);
+    //se tutti i numeri utente sono presenti in numeri computer alert "hai indovinato tutti i numei"
+    //se nessun numero utente è presente in numeri computer alert "non hai ricordato nemmeno un numero"
+    //else hai sbagliato e hai indovinato
+    if (guessedNumbers.length == 5) {
+        alert("Complimenti! Ti sei ricordato tutti inumeri!");
+    } else if (guessedNumbers.length == 0) {
+        alert("Oh no! Sembra che tu non sia riuscito a ricordare nemmeno un numero!")
+    } else {
+        alert("Hai indovinato i numeri " + guessedNumbers.join(" - ") + " ma non ti sei ricordato di " + wrongNumbers.join(" - ") + " .");
+    }
 
+}, 3000);
 
 
 //FUNZIONI
